@@ -5,7 +5,7 @@ Este projeto faz parte dos meus estudos práticos de **DevOps**. O objetivo prin
 ## 💻 Demonstração
 
 Confira o projeto em funcionamento:
-
+    
 ![Funcionamento da Landing Page](./assets/video/LandingPage.mp4)
 
 > **Nota:** O vídeo acima demonstra o fluxo de navegação da página.
@@ -29,7 +29,7 @@ O repositório armazena uma **Landing Page** desenvolvida para testar e validar 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/lucasmartinssw/Aula-DevOps.git](https://github.com/lucasmartinssw/Aula-DevOps.git)
+    git clone (https://github.com/lucasmartinssw/Aula-DevOps.git)
     ```
 
 2.  **Acesse a pasta do projeto:**
