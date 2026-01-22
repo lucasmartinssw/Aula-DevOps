@@ -1,16 +1,10 @@
-
-https://github.com/user-attachments/assets/51351cc2-c9ce-44bf-aa50-b0e9129a52be
 # 🚀 Aula DevOps - Landing Page
 
 Este projeto faz parte dos meus estudos práticos de **DevOps**. O objetivo principal é aplicar conceitos de versionamento, integração contínua e deploy automatizado utilizando uma Landing Page como base.
 
 ## 💻 Demonstração
 
-
-
-
 https://github.com/user-attachments/assets/17eeb6d9-4bd3-4198-b97a-231062abd65a
-
 
 ## 📋 Sobre o Projeto
 
