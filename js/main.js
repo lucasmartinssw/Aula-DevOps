@@ -126,3 +126,46 @@ window.addEventListener('scroll', () => {
         front.style.transform = `translateY(${scrollY * 0.2}px)`;
     }
 });
+
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Impede a página de recarregar
+
+        // Pega os valores dos inputs
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const mensagem = document.getElementById('mensagem').value;
+
+        const botao = contactForm.querySelector('button');
+        const textoOriginal = botao.innerText;
+        botao.innerText = "Enviando...";
+        botao.disabled = true;
+
+        try {
+            // Envia para o servidor que criamos no passo 2
+            const response = await fetch('http://localhost:3000/enviar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, email, mensagem })
+            });
+
+            if (response.ok) {
+                alert('✨ Obrigado! Sua mensagem foi enviada para nosso banco de dados.');
+                contactForm.reset(); // Limpa o formulário
+            } else {
+                alert('Erro ao enviar. Tente novamente.');
+            }
+
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro de conexão com o servidor.');
+        } finally {
+            botao.innerText = textoOriginal;
+            botao.disabled = false;
+        }
+    });
+}

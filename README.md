@@ -26,6 +26,7 @@ O repositório armazena uma **Landing Page** desenvolvida para testar e validar 
 1.  **Clone o repositório:**
     ```bash
     git clone (https://github.com/lucasmartinssw/Aula-DevOps.git)
+    git clone (https://github.com/lucasmartinssw/Aula-DevOps.git)
     ```
 
 2.  **Acesse a pasta do projeto:**
