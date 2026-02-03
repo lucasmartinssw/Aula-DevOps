@@ -1,0 +1,44 @@
+# Define o nome do Workflow
+name: Deploy to Github Pages
+
+#Iniciar
+on:
+  # Enviar o código
+  push:
+    # Filtra o gatilho. A automação trabalha somente co, pastas principais
+    branches: ["devepoler", "master", "release"]
+  # Isso cria um botão no site do Github
+  workflow_dispatch:
+  # Permite que a automação escreva publique o site
+permissions:
+  contents: read
+  pages: write
+  # Necessário para autenticação segura durante p deploy
+  id-token: write
+# Integridade das páginas (não permite dois deploys ao mesmo tempo)
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+# Lista de tarefas
+jobs:
+  deploy:
+    enviroment:
+      name: github-pages
+      url: ${{ steps.deployments.output.page_url }}
+    # Rodar no sistema operacional Ubuntos
+    runs-on: ubunto-latest
+    steps:
+      - name: Ckeckout
+        users: actions/ckeckout@v4  
+      
+      - name: Setup Pages
+       uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+        
+      - name: Deploy to github pages
+        id: deployments
+        uses: actions/deploy-pages@v4 
