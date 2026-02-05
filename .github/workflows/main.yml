@@ -34,6 +34,9 @@ jobs:
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
+      - name: Explorando o run  
+        run: lsb_release -a
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3 # Versão estável v3 ou v4
