@@ -37,6 +37,7 @@ jobs:
         
       - name: Explorando o run  
         run: lsb_release -a
+        run: free -h
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3 # Versão estável v3 ou v4
