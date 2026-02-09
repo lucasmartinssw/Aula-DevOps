@@ -26,7 +26,7 @@ jobs:
       
       # 1. Validar primeiro (Se falhar aqui, o resto nem executa)
       - name: Validar sintaxe do HTML
-        uses: htmlhint/action-htmlhint@v2
+        uses: htmlhint/action@v2
         with:
           pattern: 'index.html'
 
