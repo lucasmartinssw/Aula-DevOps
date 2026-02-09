@@ -1,27 +1,19 @@
-# Define o nome do Workflow
 name: Deploy to Github Pages
 
-# Iniciar
 on:
-  # Enviar o código
   push:
-    # Filtra o gatilho. Certifique-se de que os nomes das branches estão corretos
     branches: ["developer", "master", "release"]
-  # Isso cria um botão no site do Github
   workflow_dispatch:
 
-# Permissões necessárias para o deploy
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Integridade das páginas
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
-# Lista de tarefas
 jobs:
   deploy:
     environment:
@@ -32,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4 
       
+      # 1. Validar primeiro (Se falhar aqui, o resto nem executa)
+      - name: Validar sintaxe do HTML
+        uses: htmlhint/action-htmlhint@v2
+        with:
+          pattern: 'index.html'
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
@@ -39,7 +37,7 @@ jobs:
         run: lsb_release -a && free -h
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Versão estável v3 ou v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
         
@@ -47,11 +45,6 @@ jobs:
         id: deployments
         uses: actions/deploy-pages@v4
 
-      - name: Validar sintaxe do HTML
-        uses: htmlhint/htmlhint-action@v2
-        with:
-          target_pattern: 'index.html'
-      
       - name: Checar arquivos estáticos
         run: |
           ls -R
