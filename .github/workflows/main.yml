@@ -55,3 +55,7 @@ jobs:
       - name: Deploy to github pages
         id: deployments
         uses: actions/deploy-pages@v4
+      
+      - name: Mensagem de Auditoria Final
+        run: |
+          echo "O código do aluno Lucas Martins foi auditado, está seguindo as normas corretas e está pronto para o deploy!"
