@@ -22,30 +22,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 
-      
-      # 1. Validar primeiro (Se falhar aqui, o resto nem executa)
-      - name: Validar sintaxe do HTML
+        uses: actions/checkout@v4
+
+      - name: Verificar Pasta src
+        run: test -d src || (echo "Pasta src não encontrada!" && exit 1)
+
+      - name: Verificar CSS
+        run: test -f src/css/style.css || (echo "Arquivo src/css/style.css não encontrado!" && exit 1)
+
+      - name: Linting HTML
         uses: htmlhint/action@v2
         with:
-          pattern: 'index.html'
+          target_pattern: 'src/index.html'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
-      - name: Explorando o run  
-        run: lsb_release -a && free -h
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-        
+
       - name: Deploy to github pages
         id: deployments
         uses: actions/deploy-pages@v4
-
-      - name: Checar arquivos estáticos
-        run: |
-          ls -R
-          echo "Todos os arquivos foram carregados no Runner!"
