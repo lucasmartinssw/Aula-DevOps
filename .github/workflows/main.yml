@@ -35,10 +35,12 @@ jobs:
 
       - name: Validar Footer e Nome do Aluno
         run: |
-          if grep -q "<footer>.*Lucas Martins.*</footer>" src/index.html; then
-            echo "Validação do footer concluída com sucesso!"
+          # Verifica se a tag footer existe e se o nome Lucas Martins está presente nela
+          if grep -qzP "(?s)<footer.*Lucas Martins.*</footer>" src/index.html; then
+            echo "Sucesso: O nome Lucas Martins foi encontrado dentro do footer!"
           else
-            echo "ERRO: Tag <footer> com o nome 'Lucas Martins' não encontrada no index.html"
+            echo "ERRO: O nome 'Lucas Martins' não foi encontrado dentro da tag <footer>."
+            echo "Certifique-se de que o nome está escrito corretamente no index.html"
             exit 1
           fi
 
