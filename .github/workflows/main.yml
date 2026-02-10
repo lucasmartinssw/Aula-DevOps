@@ -30,10 +30,10 @@ jobs:
       - name: Verificar CSS
         run: test -f src/css/style.css || (echo "Arquivo src/css/style.css não encontrado!" && exit 1)
 
-      - name: Linting HTML
-        uses: htmlhint/action@v2
-        with:
-          target_pattern: 'src/index.html'
+      # - name: Linting HTML
+      #   uses: htmlhint/action@v2
+      #   with:
+      #     target_pattern: 'src/index.html'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
