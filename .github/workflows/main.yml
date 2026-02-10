@@ -33,6 +33,15 @@ jobs:
       - name: Executar Linter HTML
         run: npx htmlhint src/index.html
 
+      - name: Validar Footer e Nome do Aluno
+        run: |
+          if grep -q "<footer>.*Lucas Martins.*</footer>" src/index.html; then
+            echo "Validação do footer concluída com sucesso!"
+          else
+            echo "ERRO: Tag <footer> com o nome 'Lucas Martins' não encontrada no index.html"
+            exit 1
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
